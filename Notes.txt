@@ -1,0 +1,60 @@
+Cluster
+Centorid
+data point
+k-value
+Elow method
+WCSS - Within-Cluster Sum of Squares
+
+
+
+
+
+Elow Method:
+The elbow method is a graphical method for finding the optimal K value in a k-means clustering algorithm. 
+The elbow graph shows the within-cluster-sum-of-square (WCSS) values on the y-axis corresponding to the different 
+values of K (on the x-axis). 
+The optimal K value is the point at which the graph forms an elbow.
+
+
+kmeans = KMeans(n_clusters=i, init='k-means++', random_state=0):
+-------------------
+KMeans: This is a function that creates a KMeans clustering model.
+n_clusters=i: This sets the number of clusters (groups) that the algorithm will try to find to i.
+init='k-means++': This is a method for initializing the cluster centers before starting the clustering process. It helps the algorithm find better initial positions for the clusters, leading to better results.
+random_state=0: This ensures that the results are reproducible. Using the same random_state value means you get the same clusters every time you run the code.
+
+kmeans.fit(X):
+-------
+fit(X): This means the model is being trained using the data X. The algorithm goes through the data points and assigns them to one of the i clusters, adjusting the cluster centers until it finds the best grouping.
+
+wcss.append(kmeans.inertia_):
+-------
+wcss: This is likely a list where you're storing the "Within-Cluster Sum of Squares" (WCSS) for each value of i.
+kmeans.inertia_: This is the value of WCSS for the clustering result. It measures how tightly the data points in a cluster are grouped together. A lower value means the clusters are more compact.
+append(kmeans.inertia_): This adds the WCSS value for the current clustering to the wcss list.
+So, overall, this code is creating and training a KMeans clustering model with i clusters, and then storing the compactness of those clusters in a list for later analysis.
+
+kmeans = KMeans(n_clusters=5, init='k-means++', random_state=0):
+-----------------
+KMeans: This function creates a KMeans clustering model.
+n_clusters=5: This sets the number of clusters (groups) that the algorithm will try to find to 5.
+init='k-means++': This is a method for initializing the cluster centers before starting the clustering process. It helps the algorithm find better initial positions for the clusters, leading to better results.
+random_state=0: This ensures that the results are reproducible. Using the same random_state value means you get the same clusters every time you run the code.
+
+
+y_kmeans = kmeans.fit_predict(X):
+-----------
+fit_predict(X): This function does two things:
+fit(X): It trains the KMeans model using the data X. The algorithm goes through the data points and assigns them to one of the 5 clusters, adjusting the cluster centers until it finds the best grouping.
+predict(X): After the model is trained, it assigns each data point in X to one of the 5 clusters.
+y_kmeans: This variable stores the cluster labels for each data point in X. Each label (ranging from 0 to 4) indicates which of the 5 clusters the corresponding data point belongs to.
+So, overall, this code creates a KMeans clustering model to find 5 clusters in the data X, trains the model on this data, and then assigns each data point to one of the 5 clusters. The cluster assignments are stored in y_kmeans.
+
+
+Silhouette Score:
+-----------
+The silhouette score measures how similar a data point is to its own cluster (cohesion) compared to other clusters (separation).
+
+Dendrograms:
+----------
+A dendrogram is a tree-like diagram that records the sequences of merges or splits in hierarchical clustering.
